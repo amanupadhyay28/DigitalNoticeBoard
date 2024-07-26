@@ -110,7 +110,7 @@ import InfoWidget from "./components/InfoWidget";
         <GoogleFormWidget />
       </div>
     </div>
-
+<LeaderboardWidget/>
         {/* <IssueTracker /> */}
        
       </div>
