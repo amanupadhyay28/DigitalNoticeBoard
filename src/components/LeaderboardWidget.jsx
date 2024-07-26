@@ -81,7 +81,7 @@ const LeaderboardWidget = () => {
 
   return (
     <div className="bg-white shadow-2xl rounded-2xl p-8 max-w-4xl mx-auto dark:bg-gray-300">
-      <h3 className="text-4xl font-extrabold mb-10 text-center text-gray-900 animate__animated animate__fadeIn">
+      <h3 className="text-4xl font-extrabold mb-10 text-center text-blue-800 animate__animated animate__fadeIn ">
         Leaderboard
       </h3>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">

@@ -38,7 +38,7 @@ const Quotes = () => {
     }, []);
 
     return (
-        <div className="bg-gray-100 p-6 rounded-lg shadow-lg max-w-md mx-auto">
+        <div className="bg-white p-6 rounded-lg shadow-lg max-w-md mx-auto">
             {loading ? (
                 <p className="text-gray-600 text-center">Loading...</p>
             ) : error ? (
@@ -46,7 +46,7 @@ const Quotes = () => {
             ) : (
                 <div className="flex flex-col items-center text-center">
                     {/* Quote Text */}
-                    <p className="text-xl font-semibold text-gray-800 italic mb-4">
+                    <p className="text-xl font-semibold text-blue-700 italic mb-4">
                         "{quote}"
                     </p>
 
