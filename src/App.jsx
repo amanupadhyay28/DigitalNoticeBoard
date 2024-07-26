@@ -68,7 +68,7 @@ import InfoWidget from "./components/InfoWidget";
           <DarkModeToggle />
         </div>
       </header>
-       <div className="flex">
+       <div className="flex mb-12">
           <div className="flex-none w-1/2">
             <GoogleSlidesWidget />
           </div>  
