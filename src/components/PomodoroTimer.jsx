@@ -1,81 +1,85 @@
 import React, { useState, useEffect } from 'react';
-import './PomodoroTimer.css';
 
 const PomodoroTimer = () => {
-  const [seconds, setSeconds] = useState(1500); // 25 minutes
+  const [time, setTime] = useState(1500); // 25 minutes in seconds
   const [isActive, setIsActive] = useState(false);
-  const [isBreak, setIsBreak] = useState(false);
+  const [mode, setMode] = useState('pomodoro'); // 'pomodoro', 'shortBreak', 'longBreak'
 
   useEffect(() => {
     let interval = null;
-    if (isActive && seconds > 0) {
+    if (isActive && time > 0) {
       interval = setInterval(() => {
-        setSeconds((seconds) => seconds - 1);
+        setTime((prevTime) => prevTime - 1);
       }, 1000);
-    } else if (seconds === 0) {
+    } else if (!isActive && time !== 0) {
       clearInterval(interval);
-      if (isBreak) {
-        setSeconds(1500); // 25 minutes
-        setIsBreak(false);
-      } else {
-        setSeconds(300); // 5 minutes break
-        setIsBreak(true);
-      }
+    } else if (time === 0) {
+      clearInterval(interval);
       setIsActive(false);
-    } else {
-      clearInterval(interval);
+      // Add sound or alert here if needed
     }
     return () => clearInterval(interval);
-  }, [isActive, seconds, isBreak]);
+  }, [isActive, time]);
 
   const toggleTimer = () => {
     setIsActive(!isActive);
   };
 
-  const resetTimer = () => {
+  const resetTimer = (newMode) => {
     setIsActive(false);
-    setSeconds(isBreak ? 300 : 1500);
+    setMode(newMode);
+    if (newMode === 'pomodoro') setTime(1500); // 25 minutes
+    else if (newMode === 'shortBreak') setTime(300); // 5 minutes
+    else if (newMode === 'longBreak') setTime(900); // 15 minutes
   };
 
-  const getCircularProgress = () => {
-    const radius = 60;
-    const circumference = 2 * Math.PI * radius;
-    const progress = ((seconds / (isBreak ? 300 : 1500)) * circumference).toFixed(2);
-    return progress;
+  const formatTime = (time) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = time % 60;
+    return `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
   };
 
-  const minutes = Math.floor(seconds / 60);
-  const displaySeconds = seconds % 60;
+  const getModeClass = (buttonMode) => {
+    return mode === buttonMode ? 'bg-red-500 text-white' : 'bg-gray-700 text-gray-300';
+  };
 
   return (
-    // <div className="pomodoro-timer">
-      <div className={`timer-glassmorphic bg-[#B1BBD1] ${isBreak ? 'break' : isActive ? 'active' : 'paused'}`}>
-        <div className="progress-ring">
-          <svg width="140" height="140">
-            <circle
-              className="progress-ring__circle"
-              stroke="currentColor"
-              strokeWidth="8"
-              fill="transparent"
-              r="60"
-              cx="70"
-              cy="70"
-              // strokeDasharray={`${getCircularProgress()} ${2 * Math.PI * 60}`}
-            />
-          </svg>
-          <div className="time">
-            {minutes}:{displaySeconds < 10 ? `0${displaySeconds}` : displaySeconds}
-          </div>
-        </div>
-        <div className="buttons">
-          <button onClick={toggleTimer} className="control-button">
-            {isActive ? 'Pause' : 'Start'}
-          </button>
-          <button onClick={resetTimer} className="control-button">Reset</button>
+    <div className="flex flex-col items-center justify-center h-[430px] bg-gray-800 text-white rounded-2xl">
+  
+      <div className="flex space-x-4 mb-8 mt-5">
+        <button
+          className={`${getModeClass('pomodoro')} px-3 ml-2 py-1 rounded-full`}
+          onClick={() => resetTimer('pomodoro')}
+        >
+          pomodoro
+        </button>
+        <button
+          className={`${getModeClass('shortBreak')} px-3 py-1 rounded-full`}
+          onClick={() => resetTimer('shortBreak')}
+        >
+          short break
+        </button>
+        <button
+          className={`${getModeClass('longBreak')} px-3 py-2 rounded-full mr-8`}
+          onClick={() => resetTimer('longBreak')}
+        >
+          long break
+        </button>
+      </div>
+      <div className="relative mb-8 flex justify-center items-center">
+        <div className={`relative w-56 h-56 rounded-full border-8 ${isActive ? 'border-green-500' : 'border-red-500'} flex items-center justify-center ${!isActive ? 'hover:scale-105 transition-transform duration-300' : ''}`}>
+          {isActive && <div className="absolute top-0 left-0 w-full h-full rounded-full animate-pulse bg-green-500 opacity-50"></div>}
+          <div className="relative text-4xl">{formatTime(time)}</div>
         </div>
       </div>
-    // </div>
+      <button
+        className="bg-blue-500 px-5 py-3 mb-6 rounded-full text-xl"
+        onClick={toggleTimer}
+      >
+        {isActive ? 'PAUSE' : 'START'}
+      </button>
+    </div>
   );
 };
-PomodoroTimer.displayName = 'PomodoroTimer';
+
 export default PomodoroTimer;
