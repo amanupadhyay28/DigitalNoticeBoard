@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 
 const PomodoroTimer = () => {
   const [time, setTime] = useState(1500); // 25 minutes in seconds
@@ -43,24 +45,31 @@ const PomodoroTimer = () => {
     return mode === buttonMode ? 'bg-red-500 text-white' : 'bg-gray-700 text-gray-300';
   };
 
+  const incrementTime = () => {
+    setTime((prevTime) => prevTime + 60); // Add 1 minute
+  };
+
+  const decrementTime = () => {
+    setTime((prevTime) => (prevTime > 60 ? prevTime - 60 : 0)); // Subtract 1 minute
+  };
+
   return (
     <div className="flex flex-col items-center justify-center h-[430px] bg-gray-800 text-white rounded-2xl">
-  
       <div className="flex space-x-4 mb-8 mt-5">
         <button
-          className={`${getModeClass('pomodoro')} px-3 ml-2 py-1 rounded-full`}
+          className={`${getModeClass('pomodoro')} px-3 ml-2  rounded-full`}
           onClick={() => resetTimer('pomodoro')}
         >
           pomodoro
         </button>
         <button
-          className={`${getModeClass('shortBreak')} px-3 py-1 rounded-full`}
+          className={`${getModeClass('shortBreak')} px-3 rounded-full`}
           onClick={() => resetTimer('shortBreak')}
         >
           short break
         </button>
         <button
-          className={`${getModeClass('longBreak')} px-3 py-2 rounded-full mr-8`}
+          className={`${getModeClass('longBreak')} px-3 py-1 rounded-full mr-8`}
           onClick={() => resetTimer('longBreak')}
         >
           long break
@@ -72,12 +81,22 @@ const PomodoroTimer = () => {
           <div className="relative text-4xl">{formatTime(time)}</div>
         </div>
       </div>
-      <button
-        className="bg-blue-500 px-5 py-3 mb-6 rounded-full text-xl"
+      <div className="flex space-x-3 mb-2">
+        <button className="bg-blue-500 px-3 py-2 rounded-full text-md" onClick={decrementTime}>
+          <FontAwesomeIcon icon={faMinus} />
+        </button>
+        <button
+        className="bg-blue-500 px-3 py-2 rounded-full text-md"
         onClick={toggleTimer}
       >
         {isActive ? 'PAUSE' : 'START'}
-      </button>
+      </button>   
+        <button className="bg-blue-500 px-3 py-2 rounded-full text-md" onClick={incrementTime}>
+          <FontAwesomeIcon icon={faPlus} />
+        </button>
+      
+      </div>
+     
     </div>
   );
 };
