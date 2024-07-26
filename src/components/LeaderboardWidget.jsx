@@ -88,10 +88,11 @@ const LeaderboardWidget = () => {
         {data.map((item, index) => (
           <div
             key={index}
-            className="flex flex-col items-center p-6 rounded-2xl hover:scale-100 hover:shadow-2xl animate__animated animate__fadeIn animate__delay-1s "
+            className="flex flex-col items-center p-6 rounded-2xl hover:scale-100 "
           >
             <div className="w-40 h-40 mb-4">
               <CircularProgressbar
+              className='hover:scale-110 animate__animated animate__fadeIn animate__delay-1s' 
                 value={progress[index]}
                 maxValue={item.maxValue}
                 text={`${Math.round(progress[index])}/${item.maxValue}`}

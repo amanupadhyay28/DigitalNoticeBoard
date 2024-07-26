@@ -83,7 +83,10 @@ const App = () => {
           <InfoWidget />
         </div>
       </div>
-      
+      <div className="flex justify-center">
+        <LeaderboardWidget />
+        <Quotes/>
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-5 mb-5">
         <div className="col-span-1">
           <SpreadsheetWidget />
@@ -96,9 +99,6 @@ const App = () => {
         </div>
       </div>
       
-      <div className="flex justify-center">
-        <LeaderboardWidget />
-      </div>
       {/* Uncomment if needed */}
       {/* <IssueTracker /> */}
     </div>
