@@ -117,7 +117,7 @@ const Poll = () => {
       {options.map((option) => (
         <div onClick={() => handleVote(option.id)}
           key={option.id}
-          className={`flex items-center justify-between p-3 mb-2  rounded-lg ${
+          className={`flex items-center justify-between p-1 mb-2 rounded-lg ${
             selectedOption === option.id ? "ring-2 ring-[#8F00FF]" : ""
           }`}
         >
@@ -137,10 +137,10 @@ const Poll = () => {
         </div>
       ))}
       <div className="mt-6">
-        <h3 className="dark:text-white  text-xl font-semibold text-gray-900 mb-2">Results:</h3>
+        <h3 className="dark:text-white text-xl font-semibold text-gray-900 mb-2">Results:</h3>
         {options.map((option) => (
           <div key={option.id} className="mb-2">
-            <div className="dark:text-white  flex justify-between mb-1 text-gray-700">
+            <div className="dark:text-white flex justify-between mb-1 text-gray-700">
               <span>{option.text}</span>
               <span>
                 {option.votes} votes (
@@ -150,7 +150,7 @@ const Poll = () => {
                 %)
               </span>
             </div>
-            <div className="w-full bg-gray-200 rounded-full h-4">
+            <div className="bg-gray-200 rounded-full h-4">
               <div
                 className="bg-green-500 h-4 rounded-full transition-all duration-300"
                 style={{
