@@ -79,8 +79,7 @@ import InfoWidget from "./components/InfoWidget";
           <div className="flex w-full space-x-4">
             <div className="flex-1">
               <PomodoroTimer />
-              {/* <LeaderboardWidget /> */}
-              {/* <Quotes/> */}
+            
             </div>
             <div className="flex-1">
             <MusicWidget />
@@ -88,7 +87,7 @@ import InfoWidget from "./components/InfoWidget";
           </div>
         </div>
       </div>
-      <div className="flex space-x-4">
+      <div className="flex space-x-4 mb-11">
       <div className="flex-1">
         <OpportunityBoardWidget />
       </div>
