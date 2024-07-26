@@ -110,7 +110,7 @@ const Poll = () => {
   const totalVotes = options.reduce((acc, option) => acc + option.votes, 0);
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-xl bg-[#ffbaba] dark:bg-[#ff5252]">
+    <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-xl bg-[#ffbaba] dark:bg-gray-500">
       <h2 className="text-2xl font-bold mb-6 text-gray-900 flex items-center dark:text-white">
         Vote for Your Favorite Stack
       </h2>
@@ -118,7 +118,7 @@ const Poll = () => {
         <div onClick={() => handleVote(option.id)}
           key={option.id}
           className={`flex items-center justify-between p-1 mb-2 rounded-lg ${
-            selectedOption === option.id ? "ring-2 ring-[#8F00FF]" : ""
+            selectedOption === option.id ? "ring-2 ring-[white]" : ""
           }`}
         >
           <span className="dark:text-white flex-1 text-lg font-medium text-gray-700">
@@ -127,7 +127,7 @@ const Poll = () => {
           <button
             className={`flex items-center justify-center p-2 rounded-full transition-colors duration-300 ${
               selectedOption === option.id
-                ? "bg-[#8F00FF]"
+                ? "bg-green-500"
                 : "bg-gray-300 hover:bg-blue-400"
             }`}
 
