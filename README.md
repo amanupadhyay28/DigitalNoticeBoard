@@ -43,7 +43,6 @@ The Digital Notice Board Chrome Extension is designed to enhance communication a
 ![Drag-and-Drop Interface](ss/ss4.png)
 ![Drag-and-Drop Interface](ss/ss5.png)
 ![Drag-and-Drop Interface](ss/ss6.png)
-![Drag-and-Drop Interface](ss/ss7.png)
 ![Drag-and-Drop Interface](ss/ss8.png)
 
 
