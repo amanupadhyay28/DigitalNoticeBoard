@@ -1,0 +1,49 @@
+/* PomodoroTimer.css */
+.pomodoro-timer {
+  @apply flex flex-col items-center justify-center h-screen  h-96;
+}
+
+.timer-glassmorphic {
+  @apply p-6 rounded-2xl shadow-lg relative;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.active .progress-ring__circle {
+  stroke: rgba(144, 238, 144, 0.6); /* Light green */
+}
+
+.break .progress-ring__circle {
+  stroke: rgba(255, 182, 193, 0.6); /* Light red */
+}
+
+.paused .progress-ring__circle {
+  stroke: rgba(173, 216, 230, 0.6); /* Light blue */
+}
+
+.progress-ring {
+  @apply relative flex items-center justify-center;
+}
+
+.progress-ring__circle {
+  transition: stroke-dasharray 0.35s;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+.time {
+  @apply absolute text-3xl font-bold;
+}
+
+.buttons {
+  @apply mt-6 flex justify-around	 ;
+}
+
+.control-button {
+  @apply bg-[#4c70ff]  backdrop-filter backdrop-blur-lg rounded-lg px-4 py-2 font-bold text-white transition-all duration-300 ;
+}
+
+.control-button:hover {
+  @apply bg-opacity-30;
+}
