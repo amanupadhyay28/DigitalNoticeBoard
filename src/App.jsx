@@ -27,7 +27,7 @@ const App = () => {
   }, []);
 
   const formatTime = (date) => {
-    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
   };
 
   const formatDate = (date) => {
@@ -35,13 +35,15 @@ const App = () => {
   };
 
   return (
-    <div className="app dark:bg-gray-900 dark:text-white min-h-screen p-4">
+    <div className="app  dark:bg-gray-900 dark:text-white min-h-screen p-4">
       <header className="flex flex-col sm:flex-row justify-between items-center mb-4 mr-10">
         <h1 className="text-2xl sm:text-4xl text-gray-900 dark:text-gray-100 font-bold custom-font lg:ml-[150px] ">
           Hello <span className="text-blue-800 ">Developers,</span>
         </h1>
         <div className="flex-1 flex justify-end items-center space-x-4">
           <div className="text-center">
+
+            
             <div className="text-lg sm:text-2xl text-blue-800 dark:text-white font-bold">
               {formatTime(currentDateTime)}
             </div>
@@ -52,11 +54,10 @@ const App = () => {
           <DarkModeToggle />
         </div>
       </header>
-      
+
       <div className="flex flex-col sm:flex-row gap-4 mb-12">
-        <div className="flex-1 sm:w-2/5 lg:w-2/5">
-          <GoogleSlidesWidget />
-        </div>
+        <LeaderboardWidget />
+
         <div className="flex-1 flex flex-col gap-4">
           <div className="flex-none">
             <AnnouncementsWidget className="w-full" />
@@ -71,7 +72,7 @@ const App = () => {
           </div>
         </div>
       </div>
-      
+
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-11">
         <div className="col-span-1">
           <OpportunityBoardWidget />
@@ -84,8 +85,10 @@ const App = () => {
         </div>
       </div>
       <div className="flex justify-center">
-        <LeaderboardWidget />
-        <Quotes/>
+        <div className="flex-1 sm:w-2/5 lg:w-2/5">
+          <GoogleSlidesWidget />
+        </div>
+        <Quotes />
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-5 mb-5">
         <div className="col-span-1">
@@ -98,7 +101,7 @@ const App = () => {
           <GoogleFormWidget />
         </div>
       </div>
-      
+
       {/* Uncomment if needed */}
       {/* <IssueTracker /> */}
     </div>
